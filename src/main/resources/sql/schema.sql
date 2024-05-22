@@ -1,0 +1,21 @@
+CREATE TABLE IF NOT EXISTS kpacs (
+id INT PRIMARY KEY AUTO_INCREMENT,
+title VARCHAR(250),
+description VARCHAR(2000),
+creation_date DATE
+);
+
+CREATE TABLE IF NOT EXISTS kpac_sets (
+id INT PRIMARY KEY AUTO_INCREMENT,
+title VARCHAR(250)
+);
+
+CREATE TABLE IF NOT EXISTS kpac_set_kpac (
+set_id INT,
+kpac_id INT,
+FOREIGN KEY (set_id) REFERENCES kpac_sets(id) ON DELETE CASCADE,
+FOREIGN KEY (kpac_id) REFERENCES kpacs(id) ON DELETE CASCADE,
+PRIMARY KEY (set_id, kpac_id)
+);
+
+
